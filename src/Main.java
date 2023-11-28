@@ -1,77 +1,124 @@
 package src;
 
+import java.security.KeyStore;
+import java.sql.SQLOutput;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //exercicio 1
-        double notaUm =9, notaDois = 6;
-        final double PESO_NOTA = 0.5;
-        double media = (notaUm*PESO_NOTA)+(notaDois*PESO_NOTA);
-        System.out.println("nota 1: "+notaUm +"\nnota 2: "+notaDois+"\n---------"+
-                "\nmedia: "+media);
+        Scanner sc = new Scanner(System.in);
+        boolean isContinue = true;
 
-        //exercicio 2
-        int decisao = 20;
-        if (decisao > 0){
-            System.out.println("Número: "+decisao+" é positivo!");
-        }else {
-            System.out.println("Número: "+decisao+" é negativo!");
-        }
-
-        //exercicio 3
-        int opcao = 3;
-        switch (opcao){
-            case 1:
-                System.out.println("Exercicio 1");
-                break;
-            case 2:
-                System.out.println("exercicio 2");
-                break;
-            case 3:
-                System.out.println("exercicio 3");
-                break;
-        }
-
-        //exercicio 4
-        int regressiva = 10;
-        while (regressiva >= 1){
-            System.out.println("contagem regressiva: "+regressiva);
-            regressiva --;
-        }
-
-        //exercicio 5
-        int crescente = 1 ;
         do {
-            System.out.println("número: "+crescente);
-            crescente ++;
-        }while (crescente <= 5);
+            System.out.println("digite o numero do exercicio 1 - 8: ");
+            int opcao = sc.nextInt();
 
-        //exercicio 6
-        for (int resultado = 1; resultado <= 10; resultado++) {
-            System.out.println(resultado+" x 7 = "+resultado*7);
-        }
+            switch (opcao) {
+                case 1:
+                    //exercicio 1
+                    System.out.println("---- exercicio 1 ----");
+                    System.out.println("Digite primeira nota: ");
+                    Double notaUm = sc.nextDouble();
+                    System.out.println("Digite a segunda nota: ");
+                    Double notaDois = sc.nextDouble();
+                    final Double PESO_NOTA = 0.5;
+                    double media = (notaUm*PESO_NOTA)+(notaDois*PESO_NOTA);
+                    System.out.println("nota 1: "+notaUm +"\nnota 2: "+notaDois+"\n---------"+
+                            "\nmedia: "+media);
+                    continue;
+                case 2:
+                    //exercicio 2
+                    System.out.println("---- exercicio 2 ----");
+                    System.out.println("digite um valor inteiro e vejamos se é positivo ou negativo: ");
+                    int valor = sc.nextInt();
+                    if (valor > 0){
+                        System.out.println("Número: "+valor+" é positivo!");
+                    }else {
+                        System.out.println("Número: "+valor+" é negativo!");
+                    }
+                    continue;
+                case 3:
+                    //exercicio 3
+                    System.out.println("---- exercicio 3 ----");
+                    System.out.println("este exercicio é um loop, portanto somente isso, escolha outra opcao!");
+                    continue;
+                case 4:
+                    //exercicio 4
+                    System.out.println("---- exercicio 4 ----");
+                    System.out.printf("digite um valor para contagem regressiva: ");
+                    int regressiva = sc.nextInt();
+                    while (regressiva >= 1){
+                        System.out.println("contagem regressiva: "+regressiva);
+                        regressiva --;
+                    }
+                    continue;
+                case 5:
+                    //exercicio 5
+                    System.out.println("---- exercicio 5 ----");
+                    System.out.println("digite um valor para contagem crescente: ");
+                    int valorCrescente = sc.nextInt();
+                    int crescente = 1;
+                    do {
+                        System.out.println("número: "+crescente);
+                        crescente ++;
+                    }while (crescente <= valorCrescente);
+                    continue;
+                case 6:
+                    System.out.println("---- exercicio 6 ----");
+                    System.out.println("digite um valor inteiro para realizar a tabuada: ");
+                    int valorTabuada = sc.nextInt();
+                    for (int resultado = 1; resultado <= 10; resultado++) {
+                        System.out.println(resultado+" x "+valorTabuada+ " = "+resultado*valorTabuada);
+                    }
+                    continue;
+                case 7:
+                    System.out.println("---- exercicio 7 ----");
+                    System.out.println("digite um valor inteiro do tipo primitivo: ");
+                    //declarado um tipo primitivo
+                    int numInt = sc.nextInt();
+                    //convertendo para tipo wrapper
+                    Integer objInt = Integer.valueOf(numInt);
+                    System.out.println("digite um valor inteiro declarando como wrapper: ");
+                    Integer valueInt = sc.nextInt();
+                    if (objInt == valueInt){
+                        System.out.println("valores na memoria sao iguais!");
+                    }else {
+                        System.out.println("valores na memoria sao diferentes");
+                    };
 
-        //exercicio 7
-
-        //declarando tipo primitivo
-        int numInt = 1000;
-
-        //convertendo para tipo wrapper
-        Integer objInt = Integer.valueOf(numInt);
-
-        //declarando um wrapper
-        Integer valueInt = 1000;
-
-        if (objInt == valueInt){
-            System.out.println("valores na memoria sao iguais!");
-        }else {
-            System.out.println("valores na memoria sao diferentes");
-        };
-
-        if (objInt.equals(valueInt)){
-            System.out.println("valores do objeto sao iguais!");
-        }else {
-            System.out.println("valores do objeto sao diferentes");
-        }
-
+                    if (objInt.equals(valueInt)){
+                        System.out.println("valores do objeto sao iguais!");
+                    }else {
+                        System.out.println("valores do objeto sao diferentes");
+                    }
+                    continue;
+                case 8:
+                    System.out.println("---- exercicio 8 ----");
+                    System.out.println("digite um valor: ");
+                    Double primeiroValor = sc.nextDouble();
+                    System.out.println("digite a operação desejada (+ - / *):" );
+                    String operacao = sc.next();
+                    System.out.println("digite segundo valor: ");
+                    Double segundoValor = sc.nextDouble();
+                    switch (operacao){
+                        case "+":
+                            System.out.println(primeiroValor+" + "+segundoValor+" = "+ (primeiroValor+segundoValor));
+                            break;
+                        case "-":
+                            System.out.println(primeiroValor+" - "+segundoValor+" = "+ (primeiroValor-segundoValor));
+                            break;
+                        case "/":
+                            System.out.println(primeiroValor+" / "+segundoValor+" = "+ (primeiroValor/segundoValor));
+                            break;
+                        case "*":
+                            System.out.println(primeiroValor+" + "+segundoValor+" = "+ (primeiroValor*segundoValor));
+                            break;
+                    }
+                    continue;
+                case 0:
+                    isContinue = false;
+                    break;
+            }
+        }while (isContinue);
     }
 }
