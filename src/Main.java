@@ -10,7 +10,7 @@ public class Main {
         boolean isContinue = true;
 
         do {
-            System.out.println("digite o numero do exercicio 1 - 8: ");
+            System.out.println("digite o numero do exercicio 1 - 9: ");
             int opcao = sc.nextInt();
 
             switch (opcao) {
@@ -115,6 +115,30 @@ public class Main {
                             break;
                     }
                     continue;
+                case 9:
+                    System.out.println("---- exercicio 9 ----");
+                    System.out.println("calculo IMC");
+                    System.out.println("Digite seu peso em Kg: ");
+                    Double peso = sc.nextDouble();
+                    System.out.println("Digite sua altura em Mts: ");
+                    Double altura = sc.nextDouble();
+                    Double imc = peso/(altura*altura);
+
+                    if (imc < 18.5){
+                        System.out.println(imc+" abaixo do ideal!!");
+                    }else if (imc >= 18.5 && imc <= 24.9){
+                        System.out.println(imc+" considerado normal!!");
+                    }else if(imc >= 25 && imc <= 29.9){
+                        System.out.println(imc+" sobrepeso!!");
+                    }else if (imc >= 30 && imc <= 34.9){
+                        System.out.println(imc+" obesidade grau 1");
+                    }else if(imc >= 35 && imc <= 39.9){
+                        System.out.println(imc+" obesidade grau 2");
+                    }else if (imc >= 40){
+                        System.out.println(imc+" obesidade grau 3 (obesidade morbida)");
+                    }else {
+                        System.out.println("valor default");
+                    };
                 case 0:
                     isContinue = false;
                     break;
